@@ -1,6 +1,6 @@
 # Lottery Smart Contract Built Using Solidity & React
 
-<img src=/src/img/mockup.png width="100">
+<img src=/src/img/mockup.png>
 
 This project was bootstrapped with [React](https://github.com/facebook/create-react-app).
 
