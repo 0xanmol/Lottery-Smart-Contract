@@ -37,6 +37,19 @@ class App extends React.Component {
     this.setState({message: 'You have been entered!'});
   };
 
+  onClick = async () =>{
+    const accounts = await web3.eth.getAccounts();
+    
+    this.setState({message: 'Picking a winner...'})
+
+    await lottery.methods.pickWinner().send({
+      from: accounts[0]
+    }); //pickWinner() is a read only function so we are not sending any money during this transaction as compared to enter() method above in which we did have to send a specific amount of eth to call that function, specified in our contract lottery.sol
+
+    this.setState({message: 'A winner has been successfully picked!'})
+
+  };
+
   render() {
     return (
       <div>
@@ -59,6 +72,10 @@ class App extends React.Component {
         </form>
 
         <hr />
+        <h4>Ready to pick a winner?</h4>
+        <button onClick={this.onClick}>Pick a winner!</button>
+        <hr />
+
 
         <h1>{this.state.message}</h1>
 
